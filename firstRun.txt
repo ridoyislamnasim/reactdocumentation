@@ -1,0 +1,21 @@
+==============================
+make .env file 
+==============================
+SKIP_PREFLIGHT_CHECK=true
+
+==============================
+not remove file file name 
+and remove file link
+==============================
+app.js
+index.js
+reportWebVitalis.js
+
+==============================
+run 
+==============================
+yarn start
+npm run start
+
+==============================
+==============================
