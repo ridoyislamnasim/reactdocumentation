@@ -1,0 +1,8 @@
+============================================
+Button
+============================================
+handelClick(){
+	console.log('this button was click')
+}
+
+<button onClick={this.handelClick}> Button click </button>
