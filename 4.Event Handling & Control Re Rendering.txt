@@ -1,8 +1,11 @@
 ============================================
 Button
 ============================================
-handelClick(){
+handelClick(locale){
+       this.setState({
+	locale:locale
+	})
 	console.log('this button was click')
 }
 
-<button onClick={this.handelClick}> Button click </button>
+<button onClick={this.handelClick.bind(this, 'en-US')}> Button click </button>
