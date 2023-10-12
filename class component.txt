@@ -2,6 +2,12 @@ import React from "react";
 
 export default class Calculator extends React.Component{
     render(){
-        
+        this.props.locale (variable ti pabao)
+	this.props.children (Text)	
     }
 }
+
+<Calculator locale ='bn-BD'  />
+<Calculator locale ='bn-BD' >Text </>
+Calculator = Class call
+locale = variable(props)
