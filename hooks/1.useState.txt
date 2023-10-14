@@ -1,0 +1,11 @@
+============================================
+============================================
+const [todo, setTodo] = useSate('')
+	todo = variable 
+        ' ' = value 
+	setTodo =  new value set 
+//new value set
+setTodo(inputValue) = and all render function call
+
+//roules
+           
