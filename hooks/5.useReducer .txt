@@ -2,7 +2,7 @@
 useReducer
 reducer = make small
 ====================================================
-javaScript reducer
+== javaScript reducer
  const array = [1, 2, 3, 4, 5]
  const reducerFunction = (accumulator, currentValue) => accumulator + currentValue;
  //accumultor = prev stage result
@@ -17,3 +17,17 @@ useReducer(function name, initial state)
 newStste = function(current State, action)
 return a tuple (new state, dispatch )
 dispatch = change our state
+
+//
+import {useReducer } form 'react'
+const initialState = 5;
+const reduser = (state, action) => {
+	switch(action){
+		case 'increment':
+			returen state + 1;
+		case 'decrement':
+			return state -1;
+		defult:
+			return state;
+	}
+}
