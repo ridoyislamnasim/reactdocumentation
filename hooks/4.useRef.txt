@@ -1,0 +1,9 @@
+==============================================
+useRef = like Id in Html
+==============================================
+const inputRef = useRef(null);
+useEffect(() => {
+	console.log( inputRef.current );
+},[]);
+
+<input ref = {inputRef} type = 'text' placeholder = 'Enter something' />
