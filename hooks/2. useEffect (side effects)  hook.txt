@@ -9,5 +9,13 @@ side effects
 // every render run 
 useEffect(() => {
 	document.title = `Click ${count} times '
-})
+	interval = setInterval(tick, 1000)
+	//do the cleanup -stop the timer
+	return() => {
+		clearInterval(interval)
+	}
+},[count])
 
+[count] = useEffect function call or not depent on count
+[] = only first time
+not use  = all time use 
