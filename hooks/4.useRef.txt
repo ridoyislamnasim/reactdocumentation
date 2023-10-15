@@ -13,3 +13,23 @@ useEffect(() => {
 ================================================
 forwordRef 
 ================================================
+//Input file
+import React form 'react';
+function Input({type,placeholder},ref){
+	return <input ref={ref} type={type} placeholder={placeholder} ?>
+}
+const forwardInput = React.forwardRef(input);
+export defult forwardInput;
+
+//Form file 
+import Input form './Input'
+export default function Form(){
+	const inputRef = useRef(null)
+	useEffect(() =>{
+		inputRef.current.focus();
+	},[]);
+
+	return (
+	<Input ref={inputRef} type='text' placeholder='enter something' />
+	)
+}
