@@ -1,0 +1,19 @@
+====================================================
+useReducer
+reducer = make small
+====================================================
+javaScript reducer
+ const array = [1, 2, 3, 4, 5]
+ const reducerFunction = (accumulator, currentValue) => accumulator + currentValue;
+ //accumultor = prev stage result
+ //currentValue = present value
+ //reduce(function name, initial Value)
+ console.log(array.reduce(reducerFunction) // 10
+ console.log(array.reduce(reducerFunction, 5) // 5 + 10 =15
+
+
+== in React
+useReducer(function name, initial state)
+newStste = function(current State, action)
+return a tuple (new state, dispatch )
+dispatch = change our state
