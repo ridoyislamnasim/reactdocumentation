@@ -6,3 +6,8 @@ side effects
 2. Updating the DOM
 3. setting any subscriptions or timers
 
+// every render run 
+useEffect(() => {
+	document.title = `Click ${count} times '
+})
+
