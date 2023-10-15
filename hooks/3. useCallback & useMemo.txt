@@ -1,4 +1,11 @@
 =========================================
-useCallback =
-useMemo =
+useCallback = perfomanse optimization 
+useMemo = perfomanse optimization 
 =========================================
+//rap this cuntion that render evrey time /and big working
+const incrementByOne = useCallBack(() =>{
+	setCount1((prevCount) => prevCount +1);
+},[]);
+
+//useMemo
+export default React.memo(functionName);
