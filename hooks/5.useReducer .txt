@@ -20,13 +20,16 @@ dispatch = change our state
 
 //
 import {useReducer } form 'react'
-const initialState = 5;
+//const initialState = 5;
+const initialState = {
+		initialValue : 5
+		};
 const reduser = (state, action) => {
-	switch(action){
+	switch(action.type){
 		case 'increment':
-			returen state + 1;
+			returen state.initialValue + action.count;
 		case 'decrement':
-			return state -1;
+			return state.initialValue - action.count;
 		defult:
 			return state;
 	}
@@ -35,11 +38,18 @@ export default function Counter(){
 	const [count,dispatch] = useReducer(reduser, initialState );
 	return(
 		<div>
-			<div>count - {count}</div>
-			<button type='button' onclick={() => dispatch('increment')}>
+			<div>count - {count.initialValue}</div>
+			<button type='button' onclick={() => dispatch({
+									type: 'increment',
+									count : 1,
+									})}>
 				button
 			</button>
-			<button type='button' onclick={() => dispatch('decrement')}>
+
+			<button type='button' onclick={() => dispatch({
+									type: 'decrement',
+									count : 1,
+									})}>
 				button
 			</button>
 		</div>
