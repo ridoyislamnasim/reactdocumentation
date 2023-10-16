@@ -31,3 +31,19 @@ const reduser = (state, action) => {
 			return state;
 	}
 }
+export default function Counter(){
+	const [count,dispatch] = useReducer(reduser, initialState );
+	return(
+		<div>
+			<div>count - {count}</div>
+			<button type='button' onclick={() => dispatch('increment')}>
+				button
+			</button>
+			<button type='button' onclick={() => dispatch('decrement')}>
+				button
+			</button>
+		</div>
+	)
+}
+			
+			
