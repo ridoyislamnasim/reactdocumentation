@@ -1,0 +1,8 @@
+======================================
+CSS Modules = particular component spacies
+======================================
+//css file name convension
+name.module.css
+
+//import 
+import chooseName from '../assets/name.module.css'
