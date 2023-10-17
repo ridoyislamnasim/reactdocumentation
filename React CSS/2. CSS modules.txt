@@ -20,7 +20,7 @@ import chooseName from '../assets/name.module.css'
 <div className = {chooseName.logo}>
 	<span>Ridoy Islam Nasim </span>
 </div>
-   
+
 
 ==========================
 //name.module.css
