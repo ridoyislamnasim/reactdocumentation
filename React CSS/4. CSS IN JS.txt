@@ -10,9 +10,9 @@ vscode-style-components = vs code planging //css make colorfull
 
 ===============
 ===============
-import styleName form 'styled-components'
-export const Container = styledName.div` //multiple Import//
-const Container = styledName.div` //div == any html tag
+import {styleName, createGlobalStyle } form 'styled-components'
+const Container = styledName.div` //single Import//
+export const Container = styledName.div` //div == any html tag
 	display: flex;
 	justify-contnent: center;
 	width: 100%;
@@ -32,14 +32,24 @@ const Container = styledName.div` //div == any html tag
 		}
 	}
 	`}
+export const GlobalStyle = createGlobalStyle `
+	*{
+		margin: 0px;
+		padding: 0px;
+	}`;
+
 export default Container; // only when single import
 
+========
 //where use this container
-import {Container} form './styles/Container.styles'
+import {Container, GlobalStyle} form './styles/Container.styles'
+<>
+<GlobalStyle />
 <Container heigth ="100vh">
 	<a href={link} target="_blank" rel="noreferrer"></a>
 	<Card />
 </ Container> 
+</>
 ===============
 ===============
 ===============
