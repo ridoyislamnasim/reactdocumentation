@@ -16,3 +16,4 @@ more class name
 
 border = global css
 chooseName.color = module css
+
