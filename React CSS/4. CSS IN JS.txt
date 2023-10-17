@@ -5,11 +5,24 @@ CSS IN JS
 install
 ===============
 npm i styled-components
-
+vscode-style-components = vs code planging //css make colorfull
 ===============
 
 ===============
 ===============
+import styleName form 'styled-components'
+const Container = styledName.div`
+	display: flex;
+	justify-contnent: center;
+	width: 100%;
+	heigth: 100vh;
+	`}
+export default Container;
+//where use this container
+import Container form './styles/Container.styles'
+<Container>
+	<Card />
+</ Container> 
 ===============
 ===============
 ===============
