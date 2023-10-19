@@ -1,0 +1,25 @@
+===========================================
+axios to fetch
+===========================================
+====install =============
+npm i axios
+=========================
+import {useEffect, useState } from 'react'
+import axios form 'axios';
+export default function quote() {
+	const [quote, setQuate] = useState(null)
+	useEffect(() => {
+		const fetchQuaote = async ()=>{
+			const data= await axios.get('url');
+			setQuate(data)
+		};
+	fetxhQuote();
+	},[]);
+	return(
+		<div>
+			<h1> get quotes using fetch API <h1>
+			<div>{quote?.content}</div>
+		</div>
+	);
+}
+		
