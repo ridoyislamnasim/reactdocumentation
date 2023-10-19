@@ -1,0 +1,51 @@
+==========================================
+react Query
+==========================================
+==========install==========
+npm i react-query
+===========================
+import {useEffect, useState } from 'react'
+import Quote from './components/query/Quote'
+import {QueryClinentProvider, QueryClient } from 'react-query'
+function App(){
+	const [quote, setQuate] = useState(null);
+	const client = new QueryClient({
+		defaultOptions:{
+			queries:{
+				suspense: true;
+			},
+		},
+	});
+
+	return(
+		<>
+		   <QueryClinentProvider client={client}>
+			<Suspense fallback ={<h1> Loading data .. </h1>}>
+				<Quote>
+				<Quote>
+			</Suspense>
+		   </QueryClinentProvider >
+		</>
+	);
+}
+
+===============Quoat.js file===============
+import {useQuery} from "react-Query";	
+import GetQuote from "./GetQuote";	
+function default function Quote(quote){
+	const {data, isLoading} = useQuery('quoteId', ()=> GetQuote());
+	return(
+		<div>
+			<h1> get quotes using fetch API <h1>
+			<div>{data.content}</div>
+		</div>	
+	);
+};
+===============GetQuote.js file===============
+const GetQuote = async()=>{
+		const res = await fetch('url');
+		const data = await res.json();
+		return data;
+		};
+	};
+export default GetQuote ;
