@@ -1,0 +1,32 @@
+=========================================
+update setUp
+=========================================
+npm create vite@latest
+y
+myappproject 
+React
+javascript +swc
+ls
+cd myappproject 
+code .
+
+
+
+=========================================
+update varsion:
+ node -v 
+ npm -v
+ yarn -v
+ npm i download
+ npm i -g yarn 
+ 
+//
+create-react-app
+yarn global remove create-react-app
+
+//
+ npx create-react-app myreactfolder
+ cd myreactfolder
+ code .
+
+

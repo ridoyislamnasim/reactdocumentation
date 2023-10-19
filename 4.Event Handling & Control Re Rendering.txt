@@ -1,0 +1,14 @@
+============================================
+Button
+============================================
+handelClick(locale){
+       this.setState({
+	locale:locale
+	})
+	console.log('this button was click')
+}
+==> perameter send with bind
+<button onClick={this.handelClick.bind(this, 'en-US')}> Button click </button>
+
+==> perameter send with arrow function 
+<button onClick={() => this.handelClick.bind('en-US')}> Button click </button>

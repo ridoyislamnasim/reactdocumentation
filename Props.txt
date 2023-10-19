@@ -1,0 +1,22 @@
+========================================
+props
+========================================
+function Clock({locale}){
+	return(
+		<> element </>
+	); 
+}
+<Clock locale ='bn-BD' />
+clock = function call
+locale = variable(props)
+
+========================================
+props send with function
+========================================
+function Clock({locale}){
+	return(
+		<> element </>
+	); 
+}
+<Clock locale = {()=> 'ridoy'} />
+

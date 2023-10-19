@@ -1,0 +1,69 @@
+================================================================
+app file
+================================================================
+import React, { useReducer } from 'react';
+import ComA from './components/componentA'
+export const createContext = React.createContext()
+const initialState = {
+  counter: 5
+};
+const reducer = (state, action) => {
+  console.log('reducer function run', state, state.counter, action.count)
+  switch (action.type) {
+    case 'increment':
+      return { counter: state.counter + action.count }
+    case 'decrement':
+      return { counter: state.counter - action.count }
+    default:
+      return state;
+  }
+}
+function App() {
+  const [count, dispatch] = useReducer(reducer, initialState);
+  return (
+    <div className="App">
+      <div>count - {count.counter}</div>
+      asslamualikum ridoy
+      <createContext.Provider value={dispatch}> 
+        <ComA />
+      </createContext.Provider>
+    </div>
+  );
+}
+
+export default App;
+================================================================
+componenetA
+================================================================
+import ComB from './componenetB'
+export default function ComA() { 
+    return (
+        <ComB />
+    )
+}
+================================================================
+componenetB
+================================================================
+import { useContext } from "react"
+import {createContext} from '../App'
+
+export default function ComB() {
+    const countContext = useContext(createContext)
+    return (
+        <div>       
+            <button type='button' onClick={() => countContext({
+                type: 'increment',
+                count: 4,
+            })}>
+                button
+            </button>
+
+            <button type='button' onClick={() => countContext({
+                type: 'decrement',
+                count: 1,
+            })}>
+                button
+            </button>
+        </div>
+    )
+}

@@ -1,0 +1,36 @@
+============================================
+============================================
+const [todo, setTodo] = useSate('')
+	todo = variable 
+        ' ' = value 
+	setTodo =  new value set 
+//new value set
+setTodo(inputValue) = and all render function call
+
+//roules
+1. allways use function top lavel    
+2. use in react component under    
+//useSate
+3. allways send full object variable
+const [todo, setTodo] = useSate({
+			name : '',
+			title : ''
+			})
+
+setTodo({
+	..todu,
+	title : 'full stack'
+	}) 
+
+4. if we need privious satate need 
+onle one time state change[because save privous state] this is a problem 
+while(1<5){
+	setCount(count + 1)
+	1 += 1
+}
+slove:
+while(1<5){
+	setCount((prevState) => prevState + 1)    
+	1 += 1
+}
+setCount((prevState) => prevState + 1)    

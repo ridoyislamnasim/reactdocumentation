@@ -1,0 +1,78 @@
+=========================================
+App
+=========================================
+import ClickCounter from './components/ClickCounter';
+import Counter from './components/Counter';
+import HoverCounter from './components/HoverCounter';
+function App() {
+    return (
+        <div className="app">
+	//<Count render = {(count , incrementCount) => (
+	//	<ClickCounter count={counter} incrementCount={incrementCount} />
+	//)} />
+            <Counter>
+                {(counter, incrementCount) => (
+                    <ClickCounter count={counter} incrementCount={incrementCount} />
+                )}
+            </Counter>
+            <Counter>
+                {(counter, incrementCount) => (
+                    <HoverCounter count={counter} incrementCount={incrementCount} />
+                )}
+            </Counter>
+        </div>
+    );
+}
+export default App;
+
+=========================================
+Counter;
+=========================================
+import React from 'react';
+
+class Counter extends React.Component {
+    state = {
+        count: 0,
+    };
+
+    incrementCount = () => {
+        this.setState((prevState) => ({ count: prevState.count + 1 }));
+    };
+
+    render() {
+	//const { render} = this.props;
+        const { children } = this.props;
+        const { count } = this.state;
+	//return render(count, this.incrementCount);
+        return children(count, this.incrementCount);
+    }
+}
+
+export default Counter;
+
+=========================================
+hover Counter
+=========================================
+import React from 'react';
+
+export default function HoverCounter({ count, incrementCount }) {
+    return (
+        <div>
+            <h1 onMouseOver={incrementCount}>Hovered {count} times</h1>
+        </div>
+    );
+}
+===============================================
+Click Counter
+===============================================
+import React from 'react';
+
+export default function ClickCounter({ count, incrementCount }) {
+    return (
+        <div>
+            <button type="button" onClick={incrementCount}>
+                Clicked {count} times
+            </button>
+        </div>
+    );
+}
