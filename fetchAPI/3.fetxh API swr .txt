@@ -4,22 +4,24 @@ SWR to fetch
 ====install =============
 npm i swr
 =========================
-import {useEffect, useState } from 'react'
-import axios form 'axios';
+import {Suspense} from 'react';
+import useSWR form 'swr';
+const fetcher = (...args) =>{
+	const res = await fetch(...args);
+	const data = await res.json()
+	setQuate(data)
+}
 export default function quote() {
-	const [quote, setQuate] = useState(null)
-	useEffect(() => {
-		const fetchQuaote = async ()=>{
-			const data= await axios.get('url');
-			setQuate(data)
-		};
-	fetxhQuote();
-	},[]);
+	const {data} = useSWR('URL', fetcher,{
+			suspense : true;
+		});
 	return(
+	   <Suspense fallback={<h1> Loading data .. </h1>}>
 		<div>
 			<h1> get quotes using fetch API <h1>
-			<div>{quote?content}</div>
+			<div>{quote.content}</div>
 		</div>
+	   </Suspense>
 	);
 }
 		

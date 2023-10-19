@@ -18,7 +18,7 @@ export default function quote() {
 	return(
 		<div>
 			<h1> get quotes using fetch API <h1>
-			<div>{quote?content}</div>
+			<div>{quote?.content}</div>
 		</div>
 	);
 }
