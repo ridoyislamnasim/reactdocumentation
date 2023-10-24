@@ -1,4 +1,5 @@
 ===========================================
+npm install -D @hookform/devtools
 ===========================================
 //useForm
 1. formState:
@@ -40,7 +41,7 @@ export default function App() {
 
 
   console.log(watch("example")) // watch input value by passing the name of it
-
+ 
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
