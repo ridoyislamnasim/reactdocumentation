@@ -1,0 +1,3 @@
+const JWT = require("jsonwebtoken")
+
+const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRY })
