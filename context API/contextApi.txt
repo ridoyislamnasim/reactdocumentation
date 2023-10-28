@@ -1,0 +1,80 @@
+========================================
+UserContext create
+========================================
+import React from 'react'
+const UserContext = React.createContext()
+
+export default UserContext
+========================================
+UserContextProvider create
+========================================
+import React from 'react'
+import UserContext from './UserContext'
+const UserContextProvider = ({ children }) => {
+    const [user, setUser] = React.useState(null)
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            {children}
+        </UserContext.Provider>
+    )
+}
+
+
+export default UserContextProvider;
+========================================
+rape with UserContextProvider where we props set and get
+========================================
+import UserContextProvider from './context/UserContextProvider'
+import UserShow from './user/UserShow'
+import UserInput from './user/UserInput'
+function App() {
+    return {
+        < UserContextProvider >
+<UserInput/>
+<UserShow/>
+        </UserContextProvider >
+    }
+    
+}
+
+========================================
+set value
+========================================
+import React from 'react'
+import { useState, useContext } from 'react'
+import UserContext from './context/UserContext'
+const UserInput = () => {
+    const { setUser } = useContext(UserContext)
+    const Onclick = () => {
+        setUser({
+            userName: 'ridoy',
+            password: '12345'
+        })
+    }
+    return (
+        <div>
+            <button onClick={Onclick}></button>
+        </div>
+    )
+}
+
+export default UserInput
+========================================
+get value
+========================================
+import React from 'react'
+import { useContext } from 'react'
+import UserContext from './context/UserContext'
+const UserShow = () => {
+    const { user } = useContext(UserContext)
+    return (
+        <div>
+            <p>
+                {user?.userName}
+                {user?.password}
+            </p>
+        </div>
+    )
+}
+
+export default UserShow

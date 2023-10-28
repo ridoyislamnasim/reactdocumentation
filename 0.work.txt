@@ -13,7 +13,13 @@ react render
 packages
 ============================================
 react-router-dom = makeing a link
-react-helmet = for ASIO
-axios = fetch data
-swr = fetch data
-react-query = fetch data
+react-helmet	 = for ASIO
+axios		 = fetch data
+swr		 = fetch data
+react-query	 = fetch data
+react-toastify	 =toast msg
+concurrently	 = react and node run at a time
+cors		 = when react and node run at a time any error come to manages 
+dotenv		 =.env file read korar jonno system variable exsess
+hashpassed	 = passowrd make hash
+concurrently	 = at a time run react and nodejs
