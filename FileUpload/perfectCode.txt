@@ -1,0 +1,87 @@
+const formidable = require('formidable');
+const fsPromises = require('fs').promises;
+const { join } = require('path');
+
+async function upload(req, res, next) {
+    const form = new formidable.IncomingForm();
+    form.multiples = true;
+    form.uploadDir = join(__dirname, '../../../public', 'uploads');
+    form.maxFileSize = 50 * 1024 * 1024; // 50 MB
+
+    try {
+        const uploadsFolder = form.uploadDir;
+        await checkCreateUploadsFolder(uploadsFolder);
+
+        form.parse(req, async (err, fields, files) => {
+            if (err) {
+                return res.status(400).json({ ok: false, msg: 'Error parsing the incoming form' });
+            }
+
+            if (!files || Object.keys(files).length === 0) {
+                return res.status(400).json({ ok: false, msg: 'No files were submitted with the form' });
+            }
+
+            let saveFiles = [];
+
+            for (const fieldName in files) {
+                const filesArray = files[fieldName];
+                for (let i = 0; i < filesArray.length; i++) {
+                    const file = filesArray[i];
+                    if (!checkAcceptedExtensions(file)) {
+                        return res.status(400).json({ ok: false, msg: 'Invalid file type' });
+                    }
+
+                    const currentDate = new Date().toISOString().replace(/[-T:Z.]/g, '');
+                    const fileName = currentDate + '_' + encodeURIComponent(file.originalFilename.replace(/[&.*;+]/g, '-'));
+
+                    try {
+                        await fsPromises.rename(file.filepath, join(uploadsFolder, fileName));
+                        let fileURL = `http://localhost:2000/uploads/${fileName}`;
+                        saveFiles.push(fileURL);
+                    } catch (error) {
+                        console.error('Error uploading the file:', error);
+                        try {
+                            await fsPromises.unlink(file.filepath);
+                        } catch (unlinkError) {
+                            console.error('Error removing the file:', unlinkError);
+                        }
+                        return res.status(500).json({ ok: false, msg: 'Error uploading the file' });
+                    }
+                }
+            }
+
+            req.uploadedFiles = saveFiles;
+            next();
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        return res.status(500).json({ ok: false, msg: 'Internal server error' });
+    }
+}
+
+async function checkCreateUploadsFolder(uploadsFolder) {
+    try {
+        await fsPromises.stat(uploadsFolder);
+    } catch (e) {
+        if (e && e.code === 'ENOENT') {
+            try {
+                await fsPromises.mkdir(uploadsFolder);
+            } catch (mkdirErr) {
+                console.error('Error creating directory:', mkdirErr);
+                throw mkdirErr;
+            }
+        } else {
+            console.error('Error creating the uploads folder:', e);
+            throw e;
+        }
+    }
+}
+
+function checkAcceptedExtensions(file) {
+    const type = file.type.split('/').pop();
+    const accepted = ['jpeg', 'jpg', 'png'];
+
+    return accepted.includes(type);
+}
+
+module.exports = upload;
